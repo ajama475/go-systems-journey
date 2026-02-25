@@ -10,6 +10,9 @@ test:
 cover:
 	@go test ./... -cover
 
+clean:
+	@rm -rf bin/
+
 
 
 

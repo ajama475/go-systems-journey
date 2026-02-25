@@ -1,7 +1,7 @@
 package main
 
 func Example_main() {
-	main() 
-	// Output: 
+	main()
+	// Output:
 	// Hello, world
 }
