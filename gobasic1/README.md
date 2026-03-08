@@ -183,3 +183,27 @@ The program must compile and run successfully.
 # Estimated Time
 
 Approximately **45–60 minutes** to complete.
+
+---
+
+# Expected output
+User: Alice
+
+Role: Admin
+
+Access Level: 10
+
+Administrative privileges granted
+
+Full system access
+
+
+User: Charlie
+
+Role: User
+
+Access Level: 1
+
+Standard user permissions
+
+Limited access
