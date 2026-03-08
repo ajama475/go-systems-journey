@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab is designed to reinforce several core Go concepts you have learned so far:
+This lab reinforces the Go concepts you have learned so far:
 
 - Variables
 - Functions
@@ -10,9 +10,9 @@ This lab is designed to reinforce several core Go concepts you have learned so f
 - Conditional logic (`if` and `switch`)
 - Interfaces
 
-You will design a small program that models **different types of users in a system**. Each user type will have its own data and behavior, but the program will interact with them through a **shared interface**.
+You will build a small program that models **different types of users in a system**. Each user type will have its own information and behavior, but the program will interact with them through a **shared interface**.
 
-The goal of this lab is to help you practice struct design, implementing interfaces, and applying conditional logic in Go.
+The goal is to practice struct design, implementing interfaces, and applying conditional logic in Go.
 
 ---
 
@@ -20,29 +20,28 @@ The goal of this lab is to help you practice struct design, implementing interfa
 
 By completing this lab, you should be able to:
 
-- Design structs to represent different entities
+- Design structs to represent real-world entities
 - Implement methods on structs
 - Define and use interfaces
-- Use `if` and `switch` statements for decision making
+- Apply conditional logic using `if` and `switch`
 - Write functions that work with interface types
-- Organize program logic using functions
 
 ---
 
 # Scenario
 
-You are building a very simple **account management system**.
+You are building a simple **account management system**.
 
-The system supports multiple types of users. Each user type has slightly different information and permissions, but they all share some common behavior.
+The system supports multiple types of users. Each type of user has slightly different information and permissions, but they all share common behaviors.
 
-The system needs to:
+The system must be able to:
 
-- Store information about users
-- Identify their role
-- Determine their access level
-- Display information about them
+- Identify who the user is
+- Determine the user's role
+- Determine the user's level of access
+- Display information about the user
 
-To accomplish this, you will design structs representing different users and connect them through a common interface.
+To accomplish this, you will design structs representing different users and connect them through a shared interface.
 
 ---
 
@@ -50,9 +49,9 @@ To accomplish this, you will design structs representing different users and con
 
 ## 1. Create a User Interface
 
-Define an interface representing a generic user in the system.
+Define an interface that represents a generic user in the system.
 
-The interface should represent the behaviors that **every user must support**, such as retrieving their name, identifying their role, and determining their level of access.
+The interface should represent behaviors that **every user must support**, such as retrieving their name, identifying their role, and determining their access level.
 
 All user types must satisfy this interface.
 
@@ -60,27 +59,25 @@ All user types must satisfy this interface.
 
 ## 2. Create User Types
 
-Create two different user types using structs.
+Create two user types using structs.
 
 ### Admin
 
-Represents a system administrator.  
-Administrators have the highest level of permissions in the system.
+Represents a system administrator. Administrators have the highest level of permissions.
 
-The struct should store information such as the administrator's name and department.
+The struct should contain information such as the administrator's name and department.
 
 ### Regular User
 
-Represents a standard user of the system.  
-Regular users have limited permissions.
+Represents a standard user of the system. Regular users have limited permissions.
 
-The struct should store information such as the user's name and membership level.
+The struct should contain information such as the user's name and membership level.
 
 ---
 
 ## 3. Implement the Interface
 
-Both user types must implement the interface created earlier.
+Both structs must implement the interface created earlier.
 
 Each type should provide its own behavior for:
 
@@ -88,7 +85,7 @@ Each type should provide its own behavior for:
 - Returning the user's role
 - Returning the user's access level
 
-Although the interface is shared, the actual values returned should differ between administrators and regular users.
+Although the interface is shared, the values returned by each type should reflect their different roles in the system.
 
 ---
 
@@ -96,46 +93,49 @@ Although the interface is shared, the actual values returned should differ betwe
 
 Write a function responsible for displaying information about a user.
 
-This function should accept a value that satisfies the user interface. The function should display details such as the user's name, role, and access level.
+This function should accept a parameter whose type is the user interface.
 
-This function should work with **any type that implements the interface**, not just one specific struct.
+Inside the function, display details such as the user's name, role, and access level.
+
+The important requirement is that this function must work with **any type that satisfies the interface**, not just one specific struct.
 
 ---
 
 ## 5. Add Conditional Logic
 
-Inside the user description function, include conditional logic to display different messages depending on the user's role and permissions.
+Inside the user description function, add decision-making logic.
 
-You should use:
+Use an `if` statement to determine whether the user has high or limited system access based on their access level.
 
-- An `if` statement to evaluate the user's access level and determine the type of system access they have.
-- A `switch` statement to determine the message that should be shown for different roles.
+Use a `switch` statement to determine the message displayed for different user roles.
+
+This part of the lab is meant to reinforce how Go handles conditional logic.
 
 ---
 
 ## 6. Create Multiple Users
 
-In your program's main function, create multiple users using both user types.
+In the `main` function, create multiple users using the structs you defined.
 
-The system should include at least **three users**. Some should be administrators and some should be regular users.
+You should create **at least three users**, including both administrators and regular users.
 
 ---
 
-## 7. Store Users in a Slice of Interfaces
+## 7. Process Each User
 
-Create a slice that stores multiple users through the interface type.
+Call the function you created earlier to display the information for each user.
 
-This demonstrates how interfaces allow different types to be handled uniformly.
+Do this by manually calling the function for each user you created in the main program.
 
-Loop through the slice and process each user using the function you created earlier.
+This step ensures the program demonstrates how the interface works with multiple types.
 
 ---
 
 # Program Behavior
 
-When the program runs, it should iterate through all users and display their information along with messages describing their permissions.
+When the program runs, it should display information about each user and print messages that reflect their permissions and role in the system.
 
-The program should clearly show how different user types share common behavior through the interface while still having their own characteristics.
+The program should clearly demonstrate how different structs can be treated uniformly through an interface while still behaving differently.
 
 ---
 
@@ -146,10 +146,10 @@ Your solution must include:
 - At least two different structs
 - One interface
 - Struct methods that satisfy the interface
-- At least one function that accepts the interface type
-- Use of both `if` and `switch` statements
-- A slice that stores interface values
-- A loop that processes multiple users
+- A function that accepts the interface type
+- At least one `if` statement
+- At least one `switch` statement
+- Multiple user objects created in the program
 
 ---
 
@@ -157,15 +157,15 @@ Your solution must include:
 
 ## Add a Guest User
 
-Add a third user type representing a guest. Guests have the lowest level of access in the system.
+Create a third user type representing a guest with very limited access.
 
 ## Access Control Function
 
-Create a function that determines whether a user is allowed to access an administrator-only feature.
+Create a function that determines whether a user is allowed to access administrator-only features.
 
 ## Greeting Function
 
-Create a function that prints a welcome message tailored to the user's role.
+Create a function that prints a greeting message based on the user's role.
 
 ---
 
@@ -174,7 +174,7 @@ Create a function that prints a welcome message tailored to the user's role.
 Your submission should include:
 
 - The Go source file containing the program
-- This README file describing the lab
+- This README file describes the lab
 
 The program must compile and run successfully.
 
