@@ -1,0 +1,15 @@
+# Binaries
+*.exe
+*.exe~
+*.out
+
+# Build output
+bin/
+build/
+
+# macOS
+.DS_Store
+
+# IDE (optional)
+.vscode/
+.idea/
