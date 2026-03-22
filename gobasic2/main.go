@@ -1,8 +1,16 @@
+/*
+This program builds a small user directory manager for a school club.
+
+Each user in the system has:
+- A name
+- A role
+- An age
+- A list of interests
+*/
 package main
 
 import (
 	"fmt"
-	"errors"
 )
 /*
 Represents a user in the system
@@ -21,7 +29,7 @@ type Admin struct {
 	name string
 	age int 
 	role string
-	interest []string{}
+	interest []string
 }
 
 /*
@@ -31,7 +39,7 @@ type Member struct {
 	name string
 	age int
 	role string
-	interest []string{}
+	interest []string
 }
 
 /*
@@ -82,7 +90,42 @@ func (m Member) getAge() int {
 	return m.age
 }
 
+/*
+three supported membership types in the club
+return an array length of 3
+*/
+func membershipTypes() [3]string {
+	types := [3]string{
+		"general",
+		"prospective",
+		"pro",
+	}
+	return types
+
+}
+
+func test(user User) {
+	name := user.getName()
+	age := user.getAge()
+	role := user.getRole()
+	fmt.Println("Getting User Information...")
+	fmt.Printf("Name: %v\nAge: %d\nRole: %v\n", 
+		name,
+		age,
+		role,
+	)
+}
 
 func main() {
-	//TODO
+	user1 := Admin{
+	  name: "Cole",
+		age: 20,
+		role: "member",
+		interest: []string{
+			"baminton",
+			"coding",
+			"reading",
+		},
+	}
+	test(user1)
 }
