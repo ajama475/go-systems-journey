@@ -43,7 +43,7 @@ type Member struct {
 }
 
 /*
-Admin implements User inteface wiht getName()
+Admin implements User inteface with getName()
 return string
 */
 func (a Admin) getName() string {
@@ -51,7 +51,7 @@ func (a Admin) getName() string {
 }
 
 /*
-Admin implements User inteface wiht getRole()
+Admin implements User inteface with getRole()
 return string
 */
 func (a Admin) getRole() string {
@@ -59,15 +59,16 @@ func (a Admin) getRole() string {
 }
 
 /*
-Admin implements User inteface wiht getAge()
+Admin implements User inteface with getAge()
 return int
 */
 func (a Admin) getAge() int {
 	return a.age
 }
 
+
 /*
-Member implements User inteface wiht getName()
+Member implements User inteface with getName()
 return string
 */
 func (m Member) getName() string {
@@ -75,7 +76,7 @@ func (m Member) getName() string {
 }
 
 /*
-Member implements User inteface wiht getRole()
+Member implements User inteface with getRole()
 return string
 */
 func (m Member) getRole() string {
@@ -83,7 +84,7 @@ func (m Member) getRole() string {
 }
 
 /*
-Member implements User inteface wiht getAge()
+Member implements User inteface with getAge()
 return string
 */
 func (m Member) getAge() int {
@@ -104,20 +105,41 @@ func membershipTypes() [3]string {
 
 }
 
-func test(user User) {
+func test(user User,membership [3]string) {
 	name := user.getName()
 	age := user.getAge()
 	role := user.getRole()
+	
 	fmt.Println("Getting User Information...")
 	fmt.Printf("Name: %v\nAge: %d\nRole: %v\n", 
 		name,
 		age,
 		role,
 	)
+	
+	if role == "admin" {
+	  fmt.Printf("Congratulations %v, you have been assigned to %v membership\n\n",
+		    name,
+		    membership[2],
+	  )
+	}
+	
+	if role == "member" {
+	  fmt.Printf("Congratulations %v, you have been assigned to %v membership\n\n",
+		    name,
+		    membership[0],
+	  )
+	}
+	 
+	
+	
 }
 
 func main() {
-	user1 := Admin{
+  membership := membershipTypes()
+  fmt.Println(membership[0])
+	
+	user1 := Member{
 	  name: "Cole",
 		age: 20,
 		role: "member",
@@ -127,5 +149,17 @@ func main() {
 			"reading",
 		},
 	}
-	test(user1)
+	test(user1, membership)
+	
+	user2 := Admin{
+	  name: "Kali",
+		age: 19,
+		role: "admin",
+		interest: []string{
+			"Design",
+			"Neurology",
+			"Running",
+		},
+	}
+	test(user2, membership)
 }
