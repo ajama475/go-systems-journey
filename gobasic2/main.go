@@ -137,8 +137,6 @@ func test(user User,membership [3]string) {
 
 func main() {
   membership := membershipTypes()
-  fmt.Println(membership[0])
-	
 	user1 := Member{
 	  name: "Cole",
 		age: 20,
@@ -162,4 +160,9 @@ func main() {
 		},
 	}
 	test(user2, membership)
+	//create map for that keeps track userID and user of that ID
+	userID := make(map[int]User)
+	userID[1] = user1
+	userID[2] = user2
+
 }
